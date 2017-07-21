@@ -1,0 +1,68 @@
+body {
+    box-sizing: border-box;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+h1 {
+
+    background: lightgray;
+    font-family: 'Sonsie One', cursive;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+div {
+    margin: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+form {
+    margin: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+input {
+    margin: 10px;
+    font-family: 'Nunito', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 13px;
+    font-family: 'Nunito', sans-serif;
+}
+
+button {
+    margin: 10px;
+    font-family: 'Nunito', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.topicbuttons {
+    background: lightgray;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+#newbutton {
+    background: lightgray;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 25%;
+}
+
+#addfont {
+    font-size: 18px;
+}
