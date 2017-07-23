@@ -1,6 +1,7 @@
-var topics = ['rainbow', 'gun', 'coding', 'puppy', 'ski', 'skateboard', 'beer', 'yoga']
+var topics = ['wolf', 'gun', 'code', 'puppy', 'ski', 'skateboard', 'beer', 'yoga']
 
 function displayGif () {
+  $('#gifview').empty()
   var gif = $(this).attr('data-name')
   var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=3395b98164d04612aa283dd896e10442&limit=10'
   $.ajax({
@@ -15,13 +16,9 @@ function displayGif () {
       var gifDiv = $("<div class='gif'>")
       var rating = response.data[i].rating
       var displayrating = $('<p>').text('Rating: ' + rating)
-      var animated = response.data[i].images.fixed_height.url
-      var still = response.data[i].images.fixed_height_still.url
-      var image = $('<img>')
-      image.attr('src', still)
-      image.attr('data-still', still)
-      image.attr('data-animated', animated)
-      image.attr('data-state', 'still')
+      gifDiv.append(displayrating)
+      var gifurl = response.data[i].images.fixed_height_small.url
+      var image = $('<img>').attr('src', gifurl)
       gifDiv.append(displayrating)
       gifDiv.append(image)
       $('.gifview').prepend(gifDiv)
@@ -48,5 +45,10 @@ $('#addbutton').on('click', function (event) {
 })
 
 $(document).on('click', '.gif', displayGif)
-$('#gifview').empty()
+
 renderButtons()
+
+$('.gifview').empty()
+
+// introduce still gifs, then upon 'click' animate gifs
+// clear .gifview each time topic button is clicked
