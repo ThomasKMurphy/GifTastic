@@ -3,7 +3,7 @@ var topics = ['wolf', 'gun', 'code', 'puppy', 'ski', 'skateboard', 'beer', 'yoga
 function displayGif () {
   $('#gifview').empty()
   var gif = $(this).attr('data-name')
-  var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=3395b98164d04612aa283dd896e10442&limit=10'
+  var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=3395b98164d04612aa283dd896e10442&limit=10'
   $.ajax({
     url: queryURL,
     method: 'GET'
