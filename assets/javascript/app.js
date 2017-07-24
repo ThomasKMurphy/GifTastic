@@ -1,4 +1,4 @@
-var topics = ['wolf', 'gun', 'code', 'puppy', 'ski', 'skateboard', 'beer', 'yoga']
+var topics = ['dinosaur', 'gun', 'code', 'puppy', 'snow', 'skateboard', 'beer', 'fitness', 'fish', 'car']
 
 function renderButtons () {
   $('.topicbuttons').empty()
@@ -26,7 +26,7 @@ $(document).on('click', 'button', function (event) {
       $('.rating').remove()
       var results = response.data
       for (var i = 0; i < topics.length; i++) {
-        var gifDiv = $('<div class="gif">')
+        var gifdiv = $('<div class="gif">')
         var rating = results[i].rating
         var displayrating = $('<p>').text('Rating: ' + rating)
         displayrating.addClass('rating')
@@ -36,10 +36,10 @@ $(document).on('click', 'button', function (event) {
         image.attr('data-state', 'still')
         image.attr('animate', results[i].images.fixed_height_still.url)
         image.attr('still', results[i].images.fixed_height.url)
-        gifDiv.append(displayrating)
-        gifDiv.append(image)
+        gifdiv.append(displayrating)
+        gifdiv.append(image)
 
-        $('.gifview').prepend(gifDiv)
+        $('.gifview').prepend(gifdiv)
         $('.imageClass').on('click', function () {
           var state = $(this).attr('data-state')
           if (state === 'still') {
@@ -54,6 +54,7 @@ $(document).on('click', 'button', function (event) {
     }
     )
 })
+
 $('#addbutton').on('click', function (event) {
   event.preventDefault()
   var gif = $('#newbuttoninput').val().trim()

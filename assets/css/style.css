@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
-  padding-left: 50px;
-  padding-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 h1 {
@@ -78,13 +78,16 @@ button {
 }
 
 .gifview {
-  width: 900px;
+  text-align: center;
+  width: 800px;
 }
 
-/*.gif {
+.gif {
   float: left;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 .clearfix {
-    overflow: auto;
-}*/
+  clear: both;
+}
