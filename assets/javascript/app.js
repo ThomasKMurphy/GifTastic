@@ -1,6 +1,6 @@
 var topics = ['dinosaur', 'gun', 'code', 'puppy', 'snow', 'skateboard', 'beer', 'fitness', 'fish', 'car']
 
-function renderButtons () {
+function renderButtons() {
   $('.topicbuttons').empty()
   for (var i = 0; i < topics.length; i++) {
     var a = $('<button>')
@@ -12,16 +12,16 @@ function renderButtons () {
 }
 
 renderButtons()
-$(document).on('click', 'button', function (event) {
+$(document).on('click', 'button', function(event) {
   var gif = $(this).attr('data-name')
   var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=3395b98164d04612aa283dd896e10442&limit=10'
   console.log(queryURL)
   $.ajax({
-    url: queryURL,
-    method: 'GET'
-  })
+      url: queryURL,
+      method: 'GET'
+    })
 
-    .done(function (response) {
+    .done(function(response) {
       $('img').remove()
       $('.rating').remove()
       var results = response.data
@@ -40,7 +40,7 @@ $(document).on('click', 'button', function (event) {
         gifdiv.append(image)
 
         $('.gifview').prepend(gifdiv)
-        $('.imageClass').on('click', function () {
+        $('.imageClass').on('click', function() {
           var state = $(this).attr('data-state')
           if (state === 'still') {
             $(this).attr('src', $(this).attr('animate'))
@@ -51,11 +51,10 @@ $(document).on('click', 'button', function (event) {
           }
         })
       }
-    }
-    )
+    })
 })
 
-$('#addbutton').on('click', function (event) {
+$('#addbutton').on('click', function(event) {
   event.preventDefault()
   var gif = $('#newbuttoninput').val().trim()
   topics.push(gif)
