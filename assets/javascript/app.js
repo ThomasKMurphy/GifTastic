@@ -1,53 +1,66 @@
 var topics = ['dinosaur', 'gun', 'code', 'puppy', 'snow', 'skateboard', 'beer', 'fitness', 'fish', 'car']
 
 function renderButtons() {
-  $('.topicbuttons').empty()
+  $('.topicbuttons').empty();
+  
   for (var i = 0; i < topics.length; i++) {
-    var a = $('<button>')
-    a.addClass('gifbutton')
-    a.attr('data-name', topics[i])
-    a.text(topics[i])
-    $('.topicbuttons').append(a)
+    var a = $('<button>');
+    a.addClass('gifbutton');
+    a.attr('data-name', topics[i]);
+    a.text(topics[i]);
+    $('.topicbuttons').append(a);
   }
 }
 
-renderButtons()
+renderButtons();
+
 $(document).on('click', 'button', function(event) {
-  var gif = $(this).attr('data-name')
+  var gif = $(this).attr('data-name');
   var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + gif + '&api_key=3395b98164d04612aa283dd896e10442&limit=10'
-  console.log(queryURL)
+  console.log(queryURL);
+
   $.ajax({
       url: queryURL,
       method: 'GET'
-    })
+    });
 
     .done(function(response) {
-      $('img').remove()
-      $('.rating').remove()
-      var results = response.data
-      for (var i = 0; i < topics.length; i++) {
-        var gifdiv = $('<div class="gif">')
-        var rating = results[i].rating
-        var displayrating = $('<p>').text('Rating: ' + rating)
-        displayrating.addClass('rating')
-        var image = $('<img>')
-        image.addClass('imageClass')
-        image.attr('src', results[i].images.fixed_height_still.url)
-        image.attr('data-state', 'still')
-        image.attr('animate', results[i].images.fixed_height_still.url)
-        image.attr('still', results[i].images.fixed_height.url)
-        gifdiv.append(displayrating)
-        gifdiv.append(image)
+      $('img').remove();
+      $('.rating').remove();
 
-        $('.gifview').prepend(gifdiv)
+      var results = response.data
+
+      for (var i = 0; i < topics.length; i++) {
+
+        var gifdiv = $('<div class="gif">');
+
+        var rating = results[i].rating
+
+        var displayrating = $('<p>').text('Rating: ' + rating);
+
+        displayrating.addClass('rating');
+        var image = $('<img>');
+
+        image.addClass('imageClass');
+        image.attr('src', results[i].images.fixed_height_still.url);
+        image.attr('data-state', 'still');
+        image.attr('animate', results[i].images.fixed_height_still.url);
+        image.attr('still', results[i].images.fixed_height.url);
+
+        gifdiv.append(displayrating);
+        gifdiv.append(image);
+
+        $('.gifview').prepend(gifdiv);
+
         $('.imageClass').on('click', function() {
-          var state = $(this).attr('data-state')
+          var state = $(this).attr('data-state');
+
           if (state === 'still') {
-            $(this).attr('src', $(this).attr('animate'))
-            $(this).attr('data-state', 'animate')
+            $(this).attr('src', $(this).attr('animate'));
+            $(this).attr('data-state', 'animate');
           } else {
-            $(this).attr('src', $(this).attr('still'))
-            $(this).attr('data-state', 'still')
+            $(this).attr('src', $(this).attr('still'));
+            $(this).attr('data-state', 'still');
           }
         })
       }
@@ -55,9 +68,14 @@ $(document).on('click', 'button', function(event) {
 })
 
 $('#addbutton').on('click', function(event) {
-  event.preventDefault()
-  var gif = $('#newbuttoninput').val().trim()
-  topics.push(gif)
-  renderButtons()
-  $('#newbuttoninput').val('')
+
+  event.preventDefault();
+
+  var gif = $('#newbuttoninput').val().trim();
+
+  topics.push(gif);
+
+  renderButtons();
+
+  $('#newbuttoninput').val('');
 })
