@@ -22,9 +22,7 @@ $(document).on('click', 'button', function(event) {
   $.ajax({
       url: queryURL,
       method: 'GET'
-    });
-
-    .done(function(response) {
+    }).done(function(response) {
       $('img').remove();
       $('.rating').remove();
 
